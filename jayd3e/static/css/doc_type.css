@@ -1,0 +1,15 @@
+h1, h2, h3, h4, h5, h6, p, ul, ol {
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+}
+h1 {
+    font-size: 16px;	
+    color: #2F2933;
+}
+h2, h3, h4, h5, h6 {
+    font-size: 14px;	
+    color: #01A2A6;
+    border-bottom: 1px solid #01A2A6;
+}
+p, ul, ol {
+	font-size: 13px;
+}

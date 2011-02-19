@@ -1,0 +1,14 @@
+@CHARSET "ISO-8859-1";
+body {
+    background-color: #000;
+    color:  green;
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    max-width: 960px;
+}
+h1 {
+	font-size: 120%;
+    font-weight: 300;
+}
+p, pre {
+    font-size: 11.5px;
+}

@@ -1,0 +1,2 @@
+class Doc(object):
+    pass
