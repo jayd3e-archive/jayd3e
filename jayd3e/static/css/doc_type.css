@@ -1,15 +1,29 @@
-h1, h2, h3, h4, h5, h6, p, ul, ol {
+.doc_body h1,
+.doc_body h2,
+.doc_body h3,
+.doc_body h4,
+.doc_body h5,
+.doc_body h6,
+.doc_body p,
+.doc_body ul,
+.doc_body ol {
     font-family: Verdana, Arial, Helvetica, sans-serif;
 }
-h1 {
+.doc_body h1 {
     font-size: 16px;	
     color: #2F2933;
 }
-h2, h3, h4, h5, h6 {
+.doc_body h2,
+.doc_body h3,
+.doc_body h4,
+.doc_body h5,
+.doc_body h6 {
     font-size: 14px;	
     color: #01A2A6;
     border-bottom: 1px solid #01A2A6;
 }
-p, ul, ol {
-	font-size: 13px;
+.doc_body p,
+.doc_body ul,
+.doc_body ol {
+    font-size: 13px;
 }

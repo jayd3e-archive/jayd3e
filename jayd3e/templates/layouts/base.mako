@@ -1,3 +1,6 @@
+<%namespace name="header" file="header.mako"/>
+<%namespace name="footer" file="footer.mako"/>
+
 <!-- base.mako --> 
 <DOCTYPE html>
 <html>
@@ -9,42 +12,13 @@
     </head>
     <body>
         <div class="header">
-            ${self.header()}
+            ${header.header(here)}
         </div>
-        ${self.body()}
+        <div class="body">
+            ${self.body()}
+        </div>
         <div class="footer">
-            ${self.footer()}
+            ${footer.footer()}
         </div>
     </body>
 </html>
-
-<%def name="header()">
-    <a href="/">
-        <div class="logo"></div>
-    </a>
-    <ul class="main">
-        <li>
-            <a class="active" href="/blog">
-               <span>Recent</span> 
-            </a>
-        </li>
-        <li>
-            <a href="/blog/archive">
-               <span>Archives</span>
-            </a>
-        </li>
-        <li>
-            <a href="/doc">	           
-                <span>Docs</span>
-            </a>
-        </li>
-        <li>
-            <a href="/blog/contact">
-               <span>Contact</span>
-            </a>
-        </li>
-    </ul>
-</%def>
-
-<%def name="footer()">
-</%def>

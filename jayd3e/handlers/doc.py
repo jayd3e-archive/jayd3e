@@ -2,17 +2,23 @@ from pyramid_handlers import action
 from jayd3e.models.doc import Doc
 
 class Doc(object):
+    set = {}
+    
     def __init__(self, request):
         self.request = request
+        self.set['here'] = self.request.environ['PATH_INFO']
     
     @action(renderer='doc/index.mako')
     def index(self):
-        return {}
+        self.set['title']='Design Documents'
+        return self.set
     
     @action(renderer='doc/stug.mako')
     def stug(self):
-        return {}
+        self.set['title']='Student Underground - Design Document'
+        return self.set
     
     @action(renderer='doc/dd.mako')
     def dd(self):
-        return {}
+        self.set['title']='Design Documentor - Design Document'
+        return self.set

@@ -1,45 +1,35 @@
-<!DOCTYPE html>
-<html>
-	<head>
-		<title>Design Doc</title>
-		<script language="javascript" type="text/javascript" src="/static/js/jquery.js"></script>
-		<script language="javascript" type="text/javascript" src="/static/js/run.js"></script>
-		<script language="javascript" type="text/javascript" src="/static/js/collapseExpand.js"></script>
-		<link rel="stylesheet" type="text/css" href="/static/css/doc_reset.css" />
-		<link rel="stylesheet" type="text/css" href="/static/css/doc_style.css" />
-		<link rel="stylesheet" type="text/css" href="/static/css/doc_type.css" />
-	</head>
-	<body>
-		<!-- 
-		-> "#" need to be the same
-		-> The pound symbol in the anchor doesn't stand for a number, it actually means
-		the pound symbol.
-		
-		<div class="collapseable">
-		    <h2>Title</h2>
-		    <p>Body</p>
-		</div>
-		 -->
-		<h1>Design Document</h1>
-		<div class="collapseable">
-		   <h2>Name</h2>
-		   <p>This project will be known as the design doc project.</p>
-		</div>
-		<div class="collapseable">
-		   <h2>Description</h2>
-		   <p>This package will be an entirely html and javascript solution to
-			creating effective, attractive design documents. As I continue to create
-			new projects, I will further perfect this tool, adding a number of
-			different features to increase the readability of the document. This
-			design document will always be a side project, meant to enhance the rest
-			of my work.</p>
-		</div>
-		<div class="collapseable">
-		   <h2>Requirements</h2>
-			<ul>
-				<li>Allow for collapseable/expandable sections.</li>
-				<li>A comprehensive table of contents at the top of the page.</li>
-			</ul>
-		</div>
-	</body>
-</html>
+<%inherit file="../layouts/doc_base.mako"/>
+
+<%def name="body()">
+    <!-- 
+    -> "#" need to be the same
+    -> The pound symbol in the anchor doesn't stand for a number, it actually means
+    the pound symbol.
+    
+    <div class="collapseable">
+        <h2>Title</h2>
+        <p>Body</p>
+    </div>
+    -->
+    <h1>Design Document</h1>
+    <div class="collapseable">
+        <h2>Name</h2>
+        <p>This project will be known as the design doc project.</p>
+    </div>
+    <div class="collapseable">
+        <h2>Description</h2>
+        <p>This package will be an entirely html and javascript solution to
+        creating effective, attractive design documents. As I continue to create
+        new projects, I will further perfect this tool, adding a number of
+        different features to increase the readability of the document. This
+        design document will always be a side project, meant to enhance the rest
+        of my work.</p>
+    </div>
+    <div class="collapseable">
+       <h2>Requirements</h2>
+       <ul>
+           <li>Allow for collapseable/expandable sections.</li>
+           <li>A comprehensive table of contents at the top of the page.</li>
+       </ul>
+    </div>
+</%def>

@@ -1,0 +1,31 @@
+h1, h2, a, span, p {
+    font-family: Helvetica, Verdana, Geneva, sans-serif;
+}
+.header ul.main li a{
+    font-size: 80%;
+    color: #FFF;
+    text-decoration: none;
+}
+.header ul.main li a.active span{
+    color: #434242; 
+}
+.header ul.main li a:hover span{
+    color: #81CFD3;
+}
+.header ul.main li a.active:hover span{
+    color: #81CFD3;
+}
+.body h1 {
+    font-size: 130%;
+    font-weight: 300;
+    color: #81CFD3;
+}
+.body h2 {
+    font-size: 110%;
+    font-weight: 300;
+    color: #434242;
+}
+.body p {
+    font-size: 90%;
+    color: #2e2e2e;
+}

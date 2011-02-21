@@ -1,17 +1,17 @@
-body {
+.doc_body {
     max-width: 960px;
     min-width: 960px;
-    padding-left: 5px;	
+    margin: 5px 10px;
 }
-h1 {
-	margin-top: 3px;
-	margin-bottom: 10px;
+.doc_body h1 {
+    margin-top: 3px;
+    margin-bottom: 10px;
 }
-h2, h3, h4, h5, h6 {
+.doc_body h2, h3, h4, h5, h6 {
     margin-bottom: 5px;
     cursor: pointer;
 }
-.collapseable {
-	padding-top: 5px;
-	padding-bottom: 5px;
+.doc_body .collapseable {
+    padding-top: 5px;
+    padding-bottom: 5px;
 }
