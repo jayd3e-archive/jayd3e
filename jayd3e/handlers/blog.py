@@ -1,14 +1,13 @@
 from pyramid_handlers import action
 from jayd3e.models.post import Post as PostModel
-from jayd3e.models.site import Session
+from jayd3e.handlers.handler import Handler
 from datetime import date
 
-class Blog(object):
+class Blog(Handler):
     set = {}
     
     def __init__(self, request):
         self.request = request
-        self.session = Session()
         self.set['here'] = self.request.environ['PATH_INFO']
 
     @action(renderer='blog/index.mako')
