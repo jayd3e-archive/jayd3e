@@ -12,7 +12,6 @@ def main(global_config, **settings):
 
     settings = dict(settings)
     config = Configurator(settings=settings, root_factory=SiteModel)
-    config.begin()
     config.add_static_view(name='static', path='jayd3e:static')
 
     #Handlers
@@ -33,7 +32,6 @@ def main(global_config, **settings):
     config.add_view(notFound, context=NotFound, renderer='exceptions/not_found.mako')
     
     config.scan(__name__)
-    config.end()
     return config.make_wsgi_app()
 
 if __name__ == '__main__':
