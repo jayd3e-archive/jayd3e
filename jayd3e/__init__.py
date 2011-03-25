@@ -4,6 +4,7 @@ from jayd3e.models.site import Site as SiteModel
 from jayd3e.handlers.site import Site as SiteHandler
 from jayd3e.handlers.blog import Blog as BlogHandler
 from jayd3e.handlers.doc import Doc as DocHandler
+from jayd3e.handlers.post import Post as PostHandler
 from jayd3e.handlers.exceptions import notFound
 
 def main(global_config, **settings):
@@ -20,12 +21,14 @@ def main(global_config, **settings):
     config.add_handler('site_root', '/', handler=SiteHandler, action='index')
     config.add_handler('blog_root', '/blog', handler=BlogHandler, action='index')
     config.add_handler('doc_root', '/doc', handler=DocHandler, action='index')
+    config.add_handler('post_root', '/post', handler=PostHandler, action='index')
 
     #Handler Action Routes
     config.add_handler('site_action', '/{action}', handler=SiteHandler)
     config.add_handler('blog_action', '/blog/{action}', handler=BlogHandler)
     config.add_handler('doc_action', '/doc/{action}', handler=DocHandler)
-    
+    config.add_handler('post_action', '/post/{action}', handler=PostHandler)
+
     #Views
     config.add_view(notFound, context=NotFound, renderer='exceptions/not_found.mako')
     

@@ -1,6 +1,5 @@
-from jayd3e.db.config import DbConfig
 from jayd3e.models.model import Base, Model
-from sqlalchemy import Column, Integer, String, Date, DateTime, MetaData, ForeignKey
+from sqlalchemy import Column, Integer, String, Date, DateTime
 
 class Post(Base, Model):
     __tablename__ = 'posts'

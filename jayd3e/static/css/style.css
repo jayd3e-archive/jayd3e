@@ -62,7 +62,7 @@
     height: 45px;
     background-image: url(../img/blog_logo.png);
     background-position: left;
-    margin-left: 5px;
+    margin-left: 10px;
     float: left;
 }
 .logo:hover {
@@ -79,6 +79,13 @@
 .body .post {
     padding-top: 5px;
     padding-bottom:10px;
+}
+
+/*
+ *  Form
+ */
+.std_form label, input {
+    display: block;
 }
 
 /*

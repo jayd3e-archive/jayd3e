@@ -1,4 +1,4 @@
-h1, h2, a, span, p {
+h1, h2, a, span, p, label {
     font-family: Helvetica, Verdana, Geneva, sans-serif;
 }
 .header ul.main li a{
@@ -29,3 +29,6 @@ h1, h2, a, span, p {
     font-size: 90%;
     color: #2e2e2e;
 }
+.std_form label {
+    font-size: 80%
+} 

@@ -10,8 +10,8 @@ def engine(config):
     create = config.engine + '://' + config.user + ':' + config.pw + '@' + config.host + '/' + config.db
     return create_engine(create, pool_recycle=3600) 
 
-def session():
-    return sessionmaker(bind=Engine)
+def session(engine):
+    return sessionmaker(bind=engine)
 
 #Base Model Class
 class Model(object):
@@ -19,5 +19,5 @@ class Model(object):
 
 Base = base()
 Engine = engine(DbConfig)
-Session = session()
+Session = session(Engine)
 
