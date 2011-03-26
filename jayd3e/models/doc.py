@@ -1,2 +1,2 @@
-class Doc(object):
+class DocModel(object):
     pass

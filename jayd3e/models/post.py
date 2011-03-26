@@ -1,7 +1,7 @@
 from jayd3e.models.model import Base, Model
 from sqlalchemy import Column, Integer, String, Date, DateTime
 
-class Post(Base, Model):
+class PostModel(Base, Model):
     __tablename__ = 'posts'
     
     id = Column(Integer, primary_key=True)

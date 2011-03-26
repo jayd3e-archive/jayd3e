@@ -1,7 +1,8 @@
 from pyramid_handlers import action
-from jayd3e.models.doc import Doc
+from jayd3e.models.doc import DocModel
+from jayd3e.handlers.handler import Handler
 
-class Doc(object):
+class DocHandler(Handler):
     set = {}
     
     def __init__(self, request):

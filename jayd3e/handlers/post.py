@@ -1,9 +1,9 @@
 from pyramid_handlers import action
-from jayd3e.models.post import Post as PostModel
+from jayd3e.models.post import PostModel
 from jayd3e.handlers.handler import Handler
 from pyramid.httpexceptions import HTTPFound
 
-class Post(Handler):
+class PostHandler(Handler):
     set = {}
     
     def __init__(self, request):

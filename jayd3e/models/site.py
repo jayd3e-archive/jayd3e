@@ -1,4 +1,4 @@
-class Site(object):
+class SiteModel(object):
     __parent__ = None
     __name__ = None
     
