@@ -1,4 +1,5 @@
 from pyramid_handlers import action
+from pyramid.security import authenticated_userid
 from jayd3e.models.post import PostModel
 from jayd3e.handlers.handler import Handler
 
@@ -7,15 +8,19 @@ class BlogHandler(Handler):
 
     def __init__(self, request):
         self.request = request
-        self.set['here'] = self.request.environ['PATH_INFO']
+        self.here = self.request.environ['PATH_INFO']
+        self.logged_in = authenticated_userid(request)
 
     @action(renderer='blog/index.mako')
     def index(self):
-        self.set['title'] = 'Blog Index'
-        self.set['posts'] = self.session.query(PostModel).all() 
-        for post in self.set['posts']:
+        self.title = 'Blog Index'
+        self.posts = self.session.query(PostModel).all() 
+        for post in self.posts:
             if post.date is not None: post.date = post.date.strftime('%B %d, %Y') 
-        return self.set
+        return {'here':self.here,
+                'title':self.title,
+                'logged_in':self.logged_in,
+                'posts':self.posts}
 
     @action(renderer='blog/hackeyes.mako')
     def hackeyes(self):

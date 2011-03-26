@@ -1,4 +1,4 @@
-h1, h2, a, span, p, label {
+h1, h2, a, span, p, label, div {
     font-family: Helvetica, Verdana, Geneva, sans-serif;
 }
 .header ul.main li a{
@@ -15,6 +15,13 @@ h1, h2, a, span, p, label {
 .header ul.main li a.active:hover span{
     color: #81CFD3;
 }
+.auth_span {
+    font-size: 80%;
+    color: #FFF;
+}
+.auth_span a {
+    color: #FFF;
+}
 .body h1 {
     font-size: 130%;
     font-weight: 300;
@@ -30,5 +37,8 @@ h1, h2, a, span, p, label {
     color: #2e2e2e;
 }
 .std_form label {
+    font-size: 80%
+}
+.std_auth_form label {
     font-size: 80%
 } 

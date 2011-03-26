@@ -1,4 +1,5 @@
 from pyramid_handlers import action
+from pyramid.security import authenticated_userid
 from jayd3e.models.doc import DocModel
 from jayd3e.handlers.handler import Handler
 
@@ -7,19 +8,26 @@ class DocHandler(Handler):
     
     def __init__(self, request):
         self.request = request
-        self.set['here'] = self.request.environ['PATH_INFO']
+        self.here = self.request.environ['PATH_INFO']
+        self.logged_in = authenticated_userid(request)
     
     @action(renderer='doc/index.mako')
     def index(self):
-        self.set['title']='Design Documents'
-        return self.set
+        self.title = 'Design Documents'
+        return {'here':self.here,
+                'logged_in':self.logged_in,
+                'title':self.title}
     
     @action(renderer='doc/stug.mako')
     def stug(self):
-        self.set['title']='Student Underground - Design Document'
-        return self.set
+        self.title = 'Student Underground - Design Document'
+        return {'here':self.here, 
+                'logged_in':self.logged_in,
+                'title':self.title}
     
     @action(renderer='doc/dd.mako')
     def dd(self):
-        self.set['title']='Design Documentor - Design Document'
-        return self.set
+        self.title = 'Design Documentor - Design Document'
+        return {'here':self.here, 
+                'logged_in':self.logged_in,
+                'title':self.title}

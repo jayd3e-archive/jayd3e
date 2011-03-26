@@ -68,7 +68,14 @@
 .logo:hover {
     background-position: right;
 }
+.auth_span {
+    float: right;
+    padding-top: 13px;
+    margin-right: 10px;
+}
+.auth_span a {
 
+}
 /*
 *   Body
 */
@@ -87,7 +94,18 @@
 .std_form label, input {
     display: block;
 }
-
+.std_form input.post_title,
+.std_form textarea.post_body {
+    width: 940px;
+    margin-bottom: 10px;
+}
+.std_auth_form {
+    margin: 0 auto;
+    margin-top: 30px;
+}
+.std_auth_form label, input {
+    display: block;
+}
 /*
 *   Exceptions
 */
