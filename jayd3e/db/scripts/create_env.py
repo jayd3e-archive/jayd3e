@@ -8,6 +8,7 @@ from sqlalchemy import MetaData
 from sqlalchemy import ForeignKey
 from sqlalchemy import create_engine
 from jayd3e.db.config import DbConfig
+from datetime import date
 from datetime import datetime
 
 class CreateEnv(object):
@@ -26,7 +27,7 @@ class CreateEnv(object):
                       Column('title', String(40)),
                       Column('body', String(2000)),
                       Column('date', Date),
-                      Column('created', DateTime, default=datetime.utcnow()),
+                      Column('created', DateTime),
                       Column('change_time', DateTime),
                       mysql_engine='InnoDB',
                       mysql_charset='utf8'

@@ -3,6 +3,8 @@ from pyramid.security import authenticated_userid
 from jayd3e.models.post import PostModel
 from jayd3e.handlers.handler import Handler
 from pyramid.httpexceptions import HTTPFound
+from datetime import date
+from datetime import datetime
 
 class PostHandler(Handler):
     def __init__(self, request):
@@ -15,7 +17,11 @@ class PostHandler(Handler):
     def add(self):
         self.title = 'Post Add'
         if self.POST:
-            new_post = PostModel(title=self.POST['title'], body=self.POST['body'])
+            new_post = PostModel(title=self.POST['title'],
+                                 body=self.POST['body'],
+                                 date=date.today(),
+                                 created=datetime.now(),
+                                 change_time=datetime.now())
             self.session.add(new_post)
             self.session.commit()
             return HTTPFound(location='/blog')

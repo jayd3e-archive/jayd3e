@@ -1,11 +1,11 @@
 from pyramid_handlers import action
-from jayd3e.models.site import SiteModel
+from pyramid.httpexceptions import HTTPFound
 from jayd3e.handlers.handler import Handler
 
 class SiteHandler(Handler):
     def __init__(self, request):
         self.request = request
 
-    @action(renderer='site/index.mako')
+    @action()
     def index(self):
-        return {}
+        return HTTPFound(location='/blog')

@@ -15,8 +15,6 @@ class BlogHandler(Handler):
     def index(self):
         self.title = 'Blog Index'
         self.posts = self.session.query(PostModel).all() 
-        for post in self.posts:
-            if post.date is not None: post.date = post.date.strftime('%B %d, %Y') 
         return {'here':self.here,
                 'title':self.title,
                 'logged_in':self.logged_in,

@@ -10,8 +10,9 @@
     font-family: Verdana, Arial, Helvetica, sans-serif;
 }
 .doc_body h1 {
-    font-size: 16px;	
-    color: #2F2933;
+    font-size: 110%;	
+    color: #434242;
+    font-weight: 300;
 }
 .doc_body h2,
 .doc_body h3,

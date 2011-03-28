@@ -32,5 +32,8 @@
             </a>
         </li>
     </ul>
-    <div class="auth_span">Logged in as ${logged_in if logged_in else 'guest'} - <a href="/auth/logout">Logout</a></div>
+    <div class="auth_span">
+        ${logged_in if logged_in else 'Guest'} - 
+        ${'<a href="/auth/logout">Logout</a>' if logged_in else '<a href="/auth/login">Login</a>'}
+    </div>
 </%def>
