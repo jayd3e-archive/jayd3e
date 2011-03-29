@@ -89,9 +89,16 @@
 }
 .post h1 {
     margin-bottom: 2px;
+    float: left;
 }
 .post h2 {
     margin-bottom: 5px;
+    clear: both;
+}
+.operations {
+    display: inline; 
+    float: left;
+    padding: 4px 5px;
 }
 /*
  *  Form

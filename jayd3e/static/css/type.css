@@ -37,8 +37,11 @@ h1, h2, a, span, p, label, div {
     color: #2e2e2e;
 }
 .std_form label {
-    font-size: 80%
+    font-size: 80%;
 }
 .std_auth_form label {
-    font-size: 80%
+    font-size: 80%;
 } 
+.operations {
+    font-size: 80%;
+}
