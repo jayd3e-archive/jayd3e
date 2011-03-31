@@ -4,7 +4,7 @@ from pyramid.httpexceptions import HTTPFound
 
 def notFound(request):
     title = 'Page Not Found'
-    return set
+    return {'title':title} 
 
 def forbidden(request):
     return HTTPFound(location='/auth/login')
