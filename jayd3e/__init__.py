@@ -40,6 +40,7 @@ def main(global_config, **settings):
     config.add_handler('blog_action', '/blog/{action}', handler=BlogHandler)
     config.add_handler('doc_action', '/doc/{action}', handler=DocHandler)
     config.add_handler('post_action', '/post/{action}', handler=PostHandler)
+    config.add_handler('post_action_id', '/post/{action}/{id}', handler=PostHandler)
     config.add_handler('auth_action', '/auth/{action}', handler=AuthHandler)
     
     #Exception Views

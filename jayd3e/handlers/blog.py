@@ -4,8 +4,6 @@ from jayd3e.models.post import PostModel
 from jayd3e.handlers.handler import Handler
 
 class BlogHandler(Handler):
-    set = {}
-
     def __init__(self, request):
         self.request = request
         self.here = self.request.environ['PATH_INFO']

@@ -1,6 +1,5 @@
 <%namespace name="header" file="header.mako"/>
 <%namespace name="footer" file="footer.mako"/>
-
 <!-- base.mako --> 
 <!DOCTYPE html>
 <html>

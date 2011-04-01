@@ -8,6 +8,7 @@
             % if logged_in:
             <div class="operations">
                 <a href="/post/edit/${post.id}"}>Edit</a>
+                <a href="/post/delete/${post.id}"}>Delete</a>
             </div>
             % endif
             <h2>${post.title}</h2>

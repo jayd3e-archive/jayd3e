@@ -28,3 +28,26 @@ class PostHandler(Handler):
         return {'here':self.here,
                 'logged_in':self.logged_in,
                 'title':self.title}
+
+    @action(renderer='post/edit.mako', permission='edit')
+    def edit(self):
+        self.title = 'Post Edit'
+        id = self.request.matchdict['id']
+        self.post = self.session.query(PostModel).filter_by(id=id).first()
+        if self.POST:
+            self.post.title = self.POST['title']
+            self.post.body = self.POST['body']
+            self.session.commit()
+            return HTTPFound(location='/blog')
+        return {'here':self.here,
+                'logged_in':self.logged_in,
+                'title':self.title,
+                'post':self.post}
+
+    @action(permission='edit')
+    def delete(self):
+        id = self.request.matchdict['id']
+        delete_post = self.session.query(PostModel).filter_by(id=id).first()
+        self.session.delete(delete_post)
+        self.session.commit()
+        return HTTPFound(location='/blog')
