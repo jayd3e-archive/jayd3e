@@ -5,9 +5,9 @@
 <html>
     <head>
         <title>${title}</title>
+        <link rel="stylesheet" type="text/css" href="/static/css/reset.css" />
         <link rel="stylesheet" type="text/css" href="/static/css/style.css" />
         <link rel="stylesheet" type="text/css" href="/static/css/type.css" />
-        <link rel="stylesheet" type="text/css" href="/static/css/reset.css" />
     </head>
     <body>
         <div class="header">
