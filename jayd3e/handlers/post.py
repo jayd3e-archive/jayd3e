@@ -7,11 +7,10 @@ from datetime import date
 from datetime import datetime
 
 class PostHandler(Handler):
-    def __init__(self, request):
-        self.request = request
+    def setup(self):
         self.here = self.request.environ['PATH_INFO']
         self.POST = self.request.str_POST
-        self.logged_in = authenticated_userid(request)
+        self.logged_in = authenticated_userid(self.request)
 
     @action(renderer='post/add.mako', permission='edit')
     def add(self):

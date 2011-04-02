@@ -4,10 +4,9 @@ from jayd3e.models.post import PostModel
 from jayd3e.handlers.handler import Handler
 
 class BlogHandler(Handler):
-    def __init__(self, request):
-        self.request = request
+    def setup(self):
         self.here = self.request.environ['PATH_INFO']
-        self.logged_in = authenticated_userid(request)
+        self.logged_in = authenticated_userid(self.request)
 
     @action(renderer='blog/index.mako')
     def index(self):
