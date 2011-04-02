@@ -1,5 +1,6 @@
 h1, h2, a, span, p, label, div {
     font-family: Helvetica, Verdana, Geneva, sans-serif;
+    line-height: 120%;
 }
 .header ul.main li a{
     font-size: 80%;
