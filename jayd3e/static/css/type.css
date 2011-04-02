@@ -33,6 +33,10 @@ h1, h2, a, span, p, label, div {
     font-weight: 300;
     color: #434242;
 }
+.body h3 {
+    font-size: 90%;
+    color: #65596E;
+}
 .body p {
     font-size: 90%;
     color: #2e2e2e;
