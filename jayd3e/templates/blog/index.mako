@@ -15,7 +15,7 @@
             </div>
             <div class="content">
                 <h2>${post.title}</h2>
-                <p>${markdown(post.body)}</p>
+                ${markdown(post.body)}
             </div>
         </div>
     % endfor
