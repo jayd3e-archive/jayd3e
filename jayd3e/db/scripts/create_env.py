@@ -5,11 +5,8 @@ from sqlalchemy import String
 from sqlalchemy import Date
 from sqlalchemy import DateTime
 from sqlalchemy import MetaData
-from sqlalchemy import ForeignKey
 from sqlalchemy import create_engine
 from jayd3e.db.config import DbConfig
-from datetime import date
-from datetime import datetime
 
 class CreateEnv(object):
     def __init__(self):
@@ -24,7 +21,7 @@ class CreateEnv(object):
 
         posts = Table('posts', metadata,
                       Column('id', Integer, primary_key=True),
-                      Column('title', String(40)),
+                      Column('title', String(100)),
                       Column('body', String(2000)),
                       Column('date', Date),
                       Column('created', DateTime),

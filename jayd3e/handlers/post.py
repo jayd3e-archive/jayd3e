@@ -50,3 +50,13 @@ class PostHandler(Handler):
         self.session.delete(delete_post)
         self.session.commit()
         return HTTPFound(location='/blog')
+
+    @action(renderer='post/view.mako')
+    def view(self):
+        self.title = 'Post View'
+        id = self.request.matchdict['id']
+        self.post = self.session.query(PostModel).filter_by(id=id).first()
+        return {'here':self.here,
+                'title':self.title,
+                'logged_in':self.logged_in,
+                'post':self.post}
