@@ -1,62 +1,70 @@
 from pyramid_handlers import action
 from pyramid.security import authenticated_userid
 from jayd3e.models.post import PostModel
-from jayd3e.handlers.handler import Handler
+from jayd3e.models.model import Session
 from pyramid.httpexceptions import HTTPFound
 from datetime import date
 from datetime import datetime
 
-class PostHandler(Handler):
-    def setup(self):
-        self.here = self.request.environ['PATH_INFO']
-        self.POST = self.request.str_POST
-        self.logged_in = authenticated_userid(self.request)
+class PostHandler(object):
+    def __init__(self, request):
+        self.request = request
+        self.here = request.environ['PATH_INFO']
+        self.logged_in = authenticated_userid(request)
 
     @action(renderer='post/add.mako', permission='edit')
     def add(self):
-        self.title = 'Post Add'
-        if self.POST:
-            new_post = PostModel(title=self.POST['title'],
-                                 body=self.POST['body'],
+        title = 'Post Add'
+        session = Session()
+        if self.request.str_POST:
+            new_post = PostModel(title=self.request.str_POST['title'],
+                                 body=self.request.str_POST['body'],
                                  date=date.today(),
                                  created=datetime.now(),
                                  change_time=datetime.now())
-            self.session.add(new_post)
-            self.session.commit()
+            session.add(new_post)
+            session.commit()
             return HTTPFound(location='/blog')
+        session.close()
         return {'here':self.here,
                 'logged_in':self.logged_in,
-                'title':self.title}
+                'title':title}
 
     @action(renderer='post/edit.mako', permission='edit')
     def edit(self):
-        self.title = 'Post Edit'
+        session = Session()
+        title = 'Post Edit'
         id = self.request.matchdict['id']
-        self.post = self.session.query(PostModel).filter_by(id=id).first()
-        if self.POST:
-            self.post.title = self.POST['title']
-            self.post.body = self.POST['body']
-            self.session.commit()
+        post = session.query(PostModel).filter_by(id=id).first()
+        if self.request.str_POST:
+            post.title = self.request.str_POST['title']
+            post.body = self.request.str_POST['body']
+            session.commit()
             return HTTPFound(location='/blog')
+        session.close()
         return {'here':self.here,
                 'logged_in':self.logged_in,
-                'title':self.title,
-                'post':self.post}
+                'title':title,
+                'post':post}
 
     @action(permission='edit')
     def delete(self):
+        session = Session()
         id = self.request.matchdict['id']
-        delete_post = self.session.query(PostModel).filter_by(id=id).first()
-        self.session.delete(delete_post)
-        self.session.commit()
+        delete_post = session.query(PostModel).filter_by(id=id).first()
+        session.delete(delete_post)
+        session.commit()
+        session.close()
         return HTTPFound(location='/blog')
 
     @action(renderer='post/view.mako')
     def view(self):
-        self.title = 'Post View'
+        session = Session()
+        title = 'Post View'
         id = self.request.matchdict['id']
-        self.post = self.session.query(PostModel).filter_by(id=id).first()
+        post = session.query(PostModel).filter_by(id=id).first()
+        session.close()
         return {'here':self.here,
-                'title':self.title,
+                'title':title,
                 'logged_in':self.logged_in,
-                'post':self.post}
+                'post':post}

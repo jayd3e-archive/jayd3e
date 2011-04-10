@@ -53,7 +53,3 @@ def main(global_config, **settings):
                     permission='__no_permission_required__')
 
     return config.make_wsgi_app()
-
-if __name__ == '__main__':
-    from paste.httpserver import serve
-    serve(main(), host="0.0.0.0", port="5432")

@@ -38,4 +38,10 @@
            <li>Provide a point system that will allow active users to be rewarded.</li>
        </ul>
     </div>
+    <div class="collapseable">
+       <h2>Style</h2>
+       <p>I would like to experiment with a style that has a similar color scheme as the
+       Square Enix logo.  This scheme will have a whit background, black UI elements, and
+       use red as a highlight.  The exact hex values of each color are yet to be determined.
+    </div>
 </%def>

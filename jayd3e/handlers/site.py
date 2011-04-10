@@ -1,9 +1,8 @@
 from pyramid_handlers import action
 from pyramid.httpexceptions import HTTPFound
-from jayd3e.handlers.handler import Handler
 
-class SiteHandler(Handler):
-    def setup(self):
+class SiteHandler(object):
+    def __init__(self, request):
         pass
 
     @action()

@@ -1,21 +1,24 @@
 from pyramid_handlers import action
 from pyramid.security import authenticated_userid
 from jayd3e.models.post import PostModel
-from jayd3e.handlers.handler import Handler
+from jayd3e.models.model import Session
 
-class BlogHandler(Handler):
-    def setup(self):
-        self.here = self.request.environ['PATH_INFO']
-        self.logged_in = authenticated_userid(self.request)
+class BlogHandler(object):
+    def __init__(self, request):
+        self.request = request
+        self.here = request.environ['PATH_INFO']
+        self.logged_in = authenticated_userid(request)
 
     @action(renderer='blog/index.mako')
     def index(self):
-        self.title = 'Blog Index'
-        self.posts = self.session.query(PostModel).all() 
+        title = 'Blog Index'
+        session = Session()
+        posts = session.query(PostModel).all() 
+        session.close()
         return {'here':self.here,
-                'title':self.title,
+                'title':title,
                 'logged_in':self.logged_in,
-                'posts':self.posts}
+                'posts':posts}
 
     @action(renderer='blog/hackeyes.mako')
     def hackeyes(self):
