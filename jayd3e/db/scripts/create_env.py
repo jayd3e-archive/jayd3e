@@ -13,7 +13,19 @@ class CreateEnv(object):
         pass
 
     def create_db(self, config):
-        create = config.engine + '://' + config.user + ':' + config.pw + '@' + config.host + '/' + config.db 
+        create = config.engine + '://'  
+        if config.user:
+            create += config.user
+        elif config.file:
+            create += config.file
+        
+        if config.pw:
+            create += ':' + config.pw 
+        if config.host:
+            create += '@' + config.host 
+        if config.db:
+            create += '/' + config.db 
+
         self.db = create_engine(create, pool_recycle=3600)
 
     def create_schema(self):
@@ -29,9 +41,10 @@ class CreateEnv(object):
                       mysql_engine='InnoDB',
                       mysql_charset='utf8'
         )
-        
+ 
         posts.create()
 
-c = CreateEnv()
-c.create_db(DbConfig)
-c.create_schema()
+if __name__ == '__main__':
+    c = CreateEnv()
+    c.create_db(DbConfig)
+    c.create_schema()

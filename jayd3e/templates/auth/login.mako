@@ -2,6 +2,7 @@
 
 <%def name="body()">
     <form method="post" action="${url}" class="std_auth_form">
+        ${'<p>'+message+'</p>' if message else ''}
         <label for="username">Username</label>
         <input name="username" class="auth_username" id="username" type="text" tabindex="1"></input>
         <label for="password">Password</label>

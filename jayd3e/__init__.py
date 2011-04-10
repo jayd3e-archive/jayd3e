@@ -12,14 +12,18 @@ from jayd3e.handlers.post import PostHandler
 from jayd3e.handlers.auth import AuthHandler
 from jayd3e.exceptions import notFound
 from jayd3e.exceptions import forbidden
+from jayd3e.models.model import initializeDb
+from jayd3e.models.model import engine
+from jayd3e.db.config import DbConfig
 
 def main(global_config, **settings):
     '''This function configures the application and returns a WSGI application'''
+    initializeDb(engine(DbConfig))
 
     authn_policy = AuthTktAuthenticationPolicy('sosecret',
                                                callback=groupfinder)
     authz_policy = ACLAuthorizationPolicy()
-    config = Configurator(settings=settings, 
+    config = Configurator(settings=settings,
                           root_factory=SiteModel,
                           authentication_policy=authn_policy,
                           authorization_policy=authz_policy,
