@@ -9,21 +9,21 @@ class DocHandler(object):
 
     @action(renderer='doc/index.mako')
     def index(self):
-        self.title = 'Design Documents'
+        title = 'Design Documents'
         return {'here':self.here,
                 'logged_in':self.logged_in,
-                'title':self.title}
+                'title':title}
 
     @action(renderer='doc/stug.mako')
     def stug(self):
-        self.title = 'Student Underground - Design Document'
+        title = 'Student Underground - Design Document'
         return {'here':self.here,
                 'logged_in':self.logged_in,
-                'title':self.title}
+                'title':title}
 
     @action(renderer='doc/dd.mako')
     def dd(self):
-        self.title = 'Design Documentor - Design Document'
+        title = 'Design Documentor - Design Document'
         return {'here':self.here, 
                 'logged_in':self.logged_in,
-                'title':self.title}
+                'title':title}

@@ -29,7 +29,7 @@ class AuthHandler(object):
                 self.headers = remember(self.request, username)
                 return HTTPFound(location = self.came_from,
                                  headers = self.headers) 
-            self.message = 'Failed login'
+            message = 'Failed login'
 
         return {'came_from':self.came_from,
                 'title':title,
