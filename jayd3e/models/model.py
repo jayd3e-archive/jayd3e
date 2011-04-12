@@ -8,8 +8,20 @@ def base():
 def session():
     return sessionmaker()
 
-def engine(config):        
-    create = config.engine + '://' + config.user + ':' + config.pw + '@' + config.host + '/' + config.db
+def engine(config):
+    create = config.engine + '://'
+    if config.user:
+        create += config.user
+    elif config.file:
+        create += config.file
+
+    if config.pw:
+        create += ':' + config.pw 
+    if config.host:
+        create += '@' + config.host
+    if config.db:
+        create += '/' + config.db 
+
     return create_engine(create, pool_recycle=3600) 
 
 Base = base()
