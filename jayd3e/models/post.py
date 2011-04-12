@@ -15,4 +15,4 @@ class PostModel(Base, Model):
         self.__dict__.update(fields)
 
     def __repr__(self):
-        return "<User('%s', '%s', '%s', '%s', '%s')>" % (self.id, self.title, self.date, self.created, self.change_time)
+        return "<Post('%s', '%s', '%s', '%s', '%s')>" % (self.id, self.title, self.date, self.created, self.change_time)
