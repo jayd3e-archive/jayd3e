@@ -13,7 +13,8 @@ class BlogHandler(object):
     def index(self):
         title = 'Blog Index'
         session = Session()
-        posts = session.query(PostModel).all() 
+        posts = session.query(PostModel).order_by(PostModel.created).all()
+        posts.reverse()
         session.close()
         return {'here':self.here,
                 'title':title,

@@ -18,7 +18,7 @@ class CreateEnv(object):
             create += config.user
         elif config.file:
             create += config.file
-        
+
         if config.pw:
             create += ':' + config.pw 
         if config.host:
