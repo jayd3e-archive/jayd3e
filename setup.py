@@ -3,7 +3,7 @@ from setuptools import setup
 
 setup(name='JayD3e',
       version='0.1dev',
-      description='A web-based note takeing application',
+      description='My personal blog.',
       long_description='',
       install_requires=['pyramid',
                         'mako',

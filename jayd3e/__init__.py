@@ -46,14 +46,14 @@ def main(global_config, **settings):
     config.add_handler('post_action', '/post/{action}', handler=PostHandler)
     config.add_handler('post_action_id', '/post/{action}/{id}', handler=PostHandler)
     config.add_handler('auth_action', '/auth/{action}', handler=AuthHandler)
-    
+
     #Exception Views
-    config.add_view(notFound, 
-                    context=NotFound, 
+    config.add_view(notFound,
+                    context=NotFound,
                     permission='__no_permission_required__',
                     renderer='exceptions/not_found.mako')
-    config.add_view(forbidden, 
-                    context=Forbidden, 
+    config.add_view(forbidden,
+                    context=Forbidden,
                     permission='__no_permission_required__')
 
     return config.make_wsgi_app()

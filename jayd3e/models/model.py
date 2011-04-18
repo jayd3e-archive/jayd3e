@@ -16,13 +16,13 @@ def engine(config):
         create += config.file
 
     if config.pw:
-        create += ':' + config.pw 
+        create += ':' + config.pw
     if config.host:
         create += '@' + config.host
     if config.db:
-        create += '/' + config.db 
+        create += '/' + config.db
 
-    return create_engine(create, pool_recycle=3600) 
+    return create_engine(create, pool_recycle=3600)
 
 Base = base()
 Session = session()
