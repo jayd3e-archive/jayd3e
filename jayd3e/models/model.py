@@ -12,15 +12,12 @@ def engine(config):
     create = config.engine + '://'
     if config.user:
         create += config.user
-    elif config.file:
-        create += config.file
-
-    if config.pw:
-        create += ':' + config.pw
-    if config.host:
-        create += '@' + config.host
-    if config.db:
-        create += '/' + config.db
+        if config.pw:
+            create += ':' + config.pw
+        if config.host:
+            create += '@' + config.host
+        if config.db:
+            create += '/' + config.db
 
     return create_engine(create, pool_recycle=3600)
 

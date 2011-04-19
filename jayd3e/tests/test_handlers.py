@@ -13,7 +13,7 @@ from datetime import datetime
 def createSession():
     from jayd3e.models.model import Session
     from sqlalchemy import create_engine
-    engine = create_engine('sqlite:///jayd3e/tests/jayd3e_db')
+    engine = create_engine('sqlite://')
     Session.configure(bind=engine)
     return Session()
 
@@ -247,12 +247,12 @@ class TestPostHandler(unittest.TestCase):
         #Call action and capture responsea
         handler = PostHandler(self.request)
         response = handler.view()
-        
+
         self.assertEqual(response['here'], '/post/view')
         self.assertEqual(response['logged_in'], None)
         self.assertEqual(response['title'], 'Post View')
         self.assertIsNot(response['post'], None)
-    
+
     def tearDown(self):
         testing.tearDown()
         self.session.close()
