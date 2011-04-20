@@ -41,6 +41,7 @@ class PostHandler(object):
             post.body = self.request.str_POST['body']
             session.commit()
             return HTTPFound(location='/blog')
+
         session.close()
         return {'here':self.here,
                 'logged_in':self.logged_in,

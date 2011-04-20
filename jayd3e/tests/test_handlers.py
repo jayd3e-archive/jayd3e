@@ -7,18 +7,16 @@ from jayd3e.handlers.doc import DocHandler
 from jayd3e.handlers.post import PostHandler
 from jayd3e.handlers.site import SiteHandler
 from jayd3e.models.post import PostModel
+from jayd3e.models.model import initializeDb
+from jayd3e.models.model import engine
+from jayd3e.models.model import Session
+from jayd3e.db.config import TestConfig
 from datetime import date
 from datetime import datetime
 
-def createSession():
-    from jayd3e.models.model import Session
-    from sqlalchemy import create_engine
-    engine = create_engine('sqlite://')
-    Session.configure(bind=engine)
-    return Session()
-
 class TestAuthHandler(unittest.TestCase):
     def setUp(self):
+        initializeDb(engine(TestConfig))
         self.config = testing.setUp()
         self.request = testing.DummyRequest()
         self.request.str_POST = {}
@@ -76,13 +74,14 @@ class TestAuthHandler(unittest.TestCase):
 
     def tearDown(self):
         testing.tearDown()
+        Session().close()
 
 class TestBlogHandler(unittest.TestCase):
     def setUp(self):
+        initializeDb(engine(TestConfig))
         self.config = testing.setUp()
         self.request = testing.DummyRequest()
         self.request.environ['PATH_INFO'] = '/blog'
-        self.session = createSession()
 
     def testBlogHandlerInit(self):
         handler = BlogHandler(self.request)
@@ -105,9 +104,11 @@ class TestBlogHandler(unittest.TestCase):
 
     def tearDown(self):
         testing.tearDown()
+        Session().close()
 
 class TestDocHandler(unittest.TestCase):
     def setUp(self):
+        initializeDb(engine(TestConfig))
         self.config = testing.setUp()
         self.request = testing.DummyRequest()
         self.request.environ['PATH_INFO'] = '/blog'
@@ -141,14 +142,15 @@ class TestDocHandler(unittest.TestCase):
 
     def tearDown(self):
         testing.tearDown()
+        Session().close()
 
 class TestPostHandler(unittest.TestCase):
     def setUp(self):
+        initializeDb(engine(TestConfig))
         self.config = testing.setUp()
         self.request = testing.DummyRequest()
         self.request.str_POST = {}
         self.request.environ['PATH_INFO'] = '/post'
-        self.session = createSession()
 
     def testPostHandlerInit(self):
         handler = PostHandler(self.request)
@@ -175,24 +177,37 @@ class TestPostHandler(unittest.TestCase):
         self.assertEqual(response.location, '/blog')
 
     def testPostHandlerEdit(self):
-        self.request.matchdict = {'id':1}
+        session = Session()
+
+        post = PostModel(title='Test Title',
+                         body='Test body.',
+                         date=date.today(),
+                         created=datetime.now(),
+                         change_time=datetime.now())
+        session.add(post)
+        session.flush()
+
+        self.request.matchdict = {'id':post.id}
         self.request.environ['PATH_INFO'] += '/edit'
+
         handler = PostHandler(self.request)
         response = handler.edit()
+
         self.assertEqual(response['here'], '/post/edit')
         self.assertEqual(response['logged_in'], None)
         self.assertEqual(response['title'], 'Post Edit')
         self.assertIsNot(response['post'], None)
 
     def testPostHandlerEditSuccess(self):
+        session = Session()
         #Create post in database
         post = PostModel(title='Test Title',
                          body='Test body.',
                          date=date.today(),
                          created=datetime.now(),
                          change_time=datetime.now())
-        self.session.add(post)
-        self.session.commit()
+        session.add(post)
+        session.commit()
         id = post.id
 
         #Setup variables that are passed into the handler
@@ -206,7 +221,7 @@ class TestPostHandler(unittest.TestCase):
         response = handler.edit()
 
         #Retrieve edited post
-        self.session.refresh(post)
+        session.refresh(post)
 
         self.assertIsInstance(response, HTTPFound)
         self.assertEqual(response.location, '/blog')
@@ -214,14 +229,15 @@ class TestPostHandler(unittest.TestCase):
         self.assertEqual(post.body, 'Test body changed.')
 
     def testPostHandlerDelete(self):
+        session = Session()
         #Create post in database
         post = PostModel(title='Test Title',
                          body='Test body.',
                          date=date.today(),
                          created=datetime.now(),
                          change_time=datetime.now())
-        self.session.add(post)
-        self.session.commit()
+        session.add(post)
+        session.commit()
         id = post.id
 
         #Setup variables that are passed into the handler
@@ -233,15 +249,24 @@ class TestPostHandler(unittest.TestCase):
         response = handler.delete()
 
         #Retrieve edited post
-        post = self.session.query(PostModel).filter_by(id=id).first()
+        post = session.query(PostModel).filter_by(id=id).first()
 
         self.assertIsInstance(response, HTTPFound)
         self.assertEqual(response.location, '/blog')
         self.assertEqual(post, None)
 
     def testPostHandlerView(self):
+        session = Session()
+        post = PostModel(title='Test Title',
+                         body='Test body.',
+                         date=date.today(),
+                         created=datetime.now(),
+                         change_time=datetime.now())
+        session.add(post)
+        session.commit()
+
         #Setup variables that are passed into the handler
-        self.request.matchdict = {'id':1}
+        self.request.matchdict = {'id':post.id}
         self.request.environ['PATH_INFO'] += '/view'
 
         #Call action and capture responsea
@@ -255,15 +280,15 @@ class TestPostHandler(unittest.TestCase):
 
     def tearDown(self):
         testing.tearDown()
-        self.session.close()
+        Session().close()
 
 class TestSiteHandler(unittest.TestCase):
     def setUp(self):
+        initializeDb(engine(TestConfig))
         self.config = testing.setUp()
         self.request = testing.DummyRequest()
         self.request.str_POST = {}
         self.request.environ['PATH_INFO'] = '/'
-        self.session = createSession()
 
     def testSiteHandlerIndex(self):
         handler = SiteHandler(self.request)
@@ -274,4 +299,4 @@ class TestSiteHandler(unittest.TestCase):
 
     def tearDown(self):
         testing.tearDown()
-        self.session.close()
+        Session().close()

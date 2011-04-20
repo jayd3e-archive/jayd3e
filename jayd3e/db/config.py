@@ -1,6 +1,5 @@
 class DbConfig(object):
     engine = 'mysql+mysqldb'
-    file = ''
     user = 'jayd3e'
     pw = 'sharp7&7'
     host = 'localhost'
@@ -8,8 +7,4 @@ class DbConfig(object):
 
 class TestConfig(object):
     engine = 'sqlite'
-    file = '/jayd3e/tests/jayd3e_db'
-    user = ''
-    pw = ''
-    host = ''
-    db = ''
+    user = False
