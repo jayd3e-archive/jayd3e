@@ -39,6 +39,7 @@ class PostHandler(object):
         if self.request.str_POST:
             post.title = self.request.str_POST['title']
             post.body = self.request.str_POST['body']
+            post.change_time = datetime.now()
             session.commit()
             return HTTPFound(location='/blog')
 

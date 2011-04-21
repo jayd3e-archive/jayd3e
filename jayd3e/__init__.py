@@ -10,6 +10,7 @@ from jayd3e.handlers.blog import BlogHandler
 from jayd3e.handlers.doc import DocHandler
 from jayd3e.handlers.post import PostHandler
 from jayd3e.handlers.auth import AuthHandler
+from jayd3e.handlers.feed import FeedHandler
 from jayd3e.exceptions import notFound
 from jayd3e.exceptions import forbidden
 from jayd3e.models.model import initializeDb
@@ -38,6 +39,7 @@ def main(global_config, **settings):
     config.add_handler('blog_root', '/blog', handler=BlogHandler, action='index')
     config.add_handler('doc_root', '/doc', handler=DocHandler, action='index')
     config.add_handler('post_root', '/post', handler=PostHandler, action='index')
+    config.add_handler('feed_root', '/feed', handler=FeedHandler, action='atom')
 
     #Handler Action Routes
     config.add_handler('site_action', '/{action}', handler=SiteHandler)
@@ -46,6 +48,7 @@ def main(global_config, **settings):
     config.add_handler('post_action', '/post/{action}', handler=PostHandler)
     config.add_handler('post_action_id', '/post/{action}/{id}', handler=PostHandler)
     config.add_handler('auth_action', '/auth/{action}', handler=AuthHandler)
+    config.add_handler('feed_action', '/feed/{action}', handler=FeedHandler)
 
     #Exception Views
     config.add_view(notFound,
