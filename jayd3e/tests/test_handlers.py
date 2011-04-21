@@ -6,6 +6,7 @@ from jayd3e.handlers.blog import BlogHandler
 from jayd3e.handlers.doc import DocHandler
 from jayd3e.handlers.post import PostHandler
 from jayd3e.handlers.site import SiteHandler
+from jayd3e.handlers.feed import FeedHandler
 from jayd3e.models.post import PostModel
 from jayd3e.models.model import initializeDb
 from jayd3e.models.model import engine
@@ -298,5 +299,38 @@ class TestSiteHandler(unittest.TestCase):
         self.assertEqual(response.location, '/blog')
 
     def tearDown(self):
+        testing.tearDown()
+        Session().close()
+
+class TestFeedHandler(unittest.TestCase):
+    def setUp(self):
+        initializeDb(engine(TestConfig))
+        self.config = testing.setUp()
+        self.request = testing.DummyRequest()
+        self.request.str_POST = {}
+        self.request.environ['PATH_INFO'] = '/'
+
+    def testFeedHandlerAtom(self):
+        session = Session()
+
+        for i in range(0,10):
+            post = PostModel(title='Test Title',
+                             body='Test body.',
+                             date=date.today(),
+                             created=datetime.now(),
+                             change_time=datetime.now())
+            session.add(post)
+        session.commit()
+
+        handler = FeedHandler(self.request)
+        response = handler.atom()
+
+        correct_time = post.change_time.strftime("%Y-%m-%dT%H:%M:%SZ")
+
+        self.assertIsNot(response['posts'], None)
+        self.assertEqual(len(response['posts']), 5)
+        self.assertEqual(response['updated'], correct_time)
+
+    def testDown(self):
         testing.tearDown()
         Session().close()
