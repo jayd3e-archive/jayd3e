@@ -16,8 +16,8 @@ class FeedHandler(object):
         posts = posts[0:5]
 
         max_change_time = session.query(func.max(PostModel.change_time)).first()
-        updated = max_change_time[0].strftime("%Y-%m-%dT%H:%M:%S+5:00")
-        
+        updated = max_change_time[0].strftime("%Y-%m-%dT%H:%M:%SZ")
+
         session.close()
         return {'posts':posts,
                 'updated':updated}

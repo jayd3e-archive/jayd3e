@@ -17,7 +17,7 @@
                     <title>${post.title}</title>
                     <link href="http://jayd3e.com/post/view/${post.id}" />
                     <id>http://jayd3e.com/post/view/${post.id}</id>
-                    <updated>${post.change_time}</updated>
+                    <updated>${post.change_time.strftime("%Y-%m-%dT%H:%M:%SZ")}</updated>
                     <summary></summary>
             </entry>
         % endfor
