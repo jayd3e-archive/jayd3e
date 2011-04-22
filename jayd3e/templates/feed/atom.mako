@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+<%!from markdown import markdown%>
  
 <feed xmlns="http://www.w3.org/2005/Atom">
  
@@ -18,7 +19,7 @@
                     <link href="http://jayd3e.com/post/view/${post.id}" />
                     <id>http://jayd3e.com/post/view/${post.id}</id>
                     <updated>${post.change_time.strftime("%Y-%m-%dT%H:%M:%SZ")}</updated>
-                    <summary></summary>
+                    <content type='html'><![CDATA[${markdown(post.body)}]]></content>
             </entry>
         % endfor
 </feed>
