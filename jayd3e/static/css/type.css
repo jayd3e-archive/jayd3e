@@ -1,4 +1,4 @@
-h1, h2, a, span, p, label, div {
+h1, h2, a, span, p, label, div, ul, ol {
     font-family: Helvetica, Verdana, Geneva, sans-serif;
     line-height: 120%;
 }
@@ -37,7 +37,7 @@ h1, h2, a, span, p, label, div {
     font-size: 85%;
     color: #65596E;
 }
-.body p {
+.body p, .body ul, .body ol {
     font-size: 80%;
     color: #2e2e2e;
 }

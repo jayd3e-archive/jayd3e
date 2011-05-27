@@ -1,7 +1,7 @@
 class DbConfig(object):
     engine = 'mysql+mysqldb'
     user = 'jayd3e'
-    pw = 'sharp7&7'
+    pw = 'hoppy&Bunny'
     host = 'localhost'
     db = 'jayd3e_db'
 
