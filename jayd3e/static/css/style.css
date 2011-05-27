@@ -94,7 +94,7 @@
     clear: both;
     padding-bottom:10px;
 }
-.body p, .body ul, .body ol, code {
+.body p, .body ul, .body ol, pre {
     padding-bottom: 10px;
 }
 .operations {
