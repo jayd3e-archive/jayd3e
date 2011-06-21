@@ -23,8 +23,8 @@
             	${header.header(here)}
             </div>
         </div>
-        <div class="doc_body">
-        	<div class="centered">
+        <div class="centered">
+        	<div class="doc_body">
             	${self.body()}
             </div>
         </div>
