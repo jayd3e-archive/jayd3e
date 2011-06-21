@@ -1,3 +1,7 @@
+div.centered {
+	margin: 0 auto;
+	width: 960px;
+}
 /*
 *   HEADER
 *     -Logo
@@ -5,13 +9,14 @@
 */
 .header {
     width: 100%;
-    height: 45px;
+    height: 202px;
     background-image: url(../img/header_bg.png);
     background-repeat: repeat-x;	
 }
 .header ul.main {
     list-style: none;
     margin-left: 20px;
+    margin-top: 158px;
     height: 45px;
     float: left;
 }
@@ -58,20 +63,28 @@
     background-position: 100% -90px;
 }
 .logo {
-    width: 70px;
+    width: 120px;
     height: 45px;
     background-image: url(../img/blog_logo.png);
     background-position: left;
     margin-left: 10px;
+    margin-top: 157px;
     float: left;
 }
 .logo:hover {
     background-position: right;
 }
+.header div.twitter_bg {
+    list-style: none;
+    float: right;
+    background-image:  url(../img/header_graphic.png);
+    width: 511px;
+    height: 202px;
+}
 .auth_span {
     float: right;
-    padding-top: 11px;
     margin-right: 10px;
+    margin-top: 170px;
 }
 .auth_span a {
 
@@ -80,7 +93,7 @@
 *   Body
 */
 .body {
-    margin: 5px 10px;
+	margin: 5px 10px;
     width: 960px;
 }
 .title {

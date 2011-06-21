@@ -11,10 +11,14 @@
     </head>
     <body>
         <div class="header">
-            ${header.header(here)}
+        	<div class="centered">
+            	${header.header(here)}
+			</div>
         </div>
-        <div class="body">
-            ${self.body()}
+        <div class="centered">
+        	<div class="body">
+            	${self.body()}
+            </div>
         </div>
         <div class="footer">
             ${footer.footer()}

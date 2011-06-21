@@ -32,13 +32,15 @@
             </a>
         </li>
     </ul>
-    <div class="auth_span">
-        ${logged_in if logged_in else 'Guest'} - 
-        % if logged_in:            
-            <a href="/post/add">New Post</a> -
-            <a href="/auth/logout">Logout</a> 
-        % else:
-            <a href="/auth/login">Login</a>
-        % endif
+    <div class="twitter_bg">
+	    <div class="auth_span">
+	        ${logged_in if logged_in else 'Guest'} - 
+	        % if logged_in:            
+	            <a href="/post/add">New Post</a> -
+	            <a href="/auth/logout">Logout</a> 
+	        % else:
+	            <a href="/auth/login">Login</a>
+	        % endif
+	    </div>
     </div>
 </%def>
