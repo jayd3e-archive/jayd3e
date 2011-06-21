@@ -1,0 +1,52 @@
+h1, h2, a, span, p, label, div, ul, ol {
+    font-family: Helvetica, Verdana, Geneva, sans-serif;
+    line-height: 120%;
+}
+.header ul.main li a{
+    font-size: 80%;
+    color: #FFF;
+    text-decoration: none;
+}
+.header ul.main li a.active span{
+    color: #434242; 
+}
+.header ul.main li a:hover span{
+    color: #81CFD3;
+}
+.header ul.main li a.active:hover span{
+    color: #81CFD3;
+}
+.auth_span {
+    font-size: 80%;
+    color: #FFF;
+}
+.auth_span a {
+    color: #FFF;
+}
+.body h1 {
+    font-size: 130%;
+    font-weight: 300;
+    color: #81CFD3;
+}
+.body h2 {
+    font-size: 110%;
+    font-weight: 300;
+    color: #434242;
+}
+.body h3 {
+    font-size: 85%;
+    color: #65596E;
+}
+.body p, .body ul, .body ol {
+    font-size: 80%;
+    color: #2e2e2e;
+}
+.std_form label {
+    font-size: 80%;
+}
+.std_auth_form label {
+    font-size: 80%;
+} 
+.operations {
+    font-size: 80%;
+}
