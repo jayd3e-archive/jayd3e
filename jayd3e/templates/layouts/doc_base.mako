@@ -18,12 +18,16 @@
         <link rel="stylesheet" type="text/css" href="/static/css/type.css" />
     </head>
     <body>
-        <div class="header">
-            ${header.header(here)}
-        </div>
-        <div class="doc_body">
-            ${self.body()}
-        </div>
+    	<div class="centered">
+	        <div class="header">
+	            ${header.header(here)}
+	        </div>
+	    </div>
+        <div class="centered">
+	        <div class="doc_body">
+	            ${self.body()}
+	        </div>
+	    </div>
         <div class="footer">
             ${footer.footer()}
         </div>

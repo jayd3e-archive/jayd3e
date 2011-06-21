@@ -10,8 +10,8 @@
         <link rel="stylesheet" type="text/css" href="/static/css/type.css" />
     </head>
     <body>
-        <div class="header">
-        	<div class="centered">
+    	<div class="centered">
+        	<div class="header">
             	${header.header(here)}
 			</div>
         </div>
