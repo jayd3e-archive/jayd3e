@@ -5,6 +5,9 @@
 <html>
     <head>
         <title>${title}</title>
+        <script language="javascript" type="text/javascript" src="/static/js/jquery.js"></script>
+        <script language="javascript" type="text/javascript" src="/static/js/run.js"></script>
+        <script language="javascript" type="text/javascript" src="/static/js/collapseExpand.js"></script>
         <link rel="stylesheet" type="text/css" href="/static/css/reset.css" />
         <link rel="stylesheet" type="text/css" href="/static/css/style.css" />
         <link rel="stylesheet" type="text/css" href="/static/css/type.css" />
