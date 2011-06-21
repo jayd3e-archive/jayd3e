@@ -10,13 +10,13 @@
         <link rel="stylesheet" type="text/css" href="/static/css/type.css" />
     </head>
     <body>
-    	<div class="centered">
-        	<div class="header">
+        <div class="header">
+        	<div class="centered">
             	${header.header(here)}
 			</div>
         </div>
-        <div class="centered">
-        	<div class="body">
+        <div class="body">
+        	<div class="centered">
             	${self.body()}
             </div>
         </div>
