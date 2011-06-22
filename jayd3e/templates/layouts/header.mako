@@ -1,7 +1,7 @@
 <%def name="header(here)">
 	<div class="top">
 		<div class="shoutbox">
-			<p>"Say 'Hi' To Your Mother for Me."</p>
+			<p>"Welcome To My Brain Dump."</p>
 		</div>
 		<div class="header_graphic"></div>
 	</div>
