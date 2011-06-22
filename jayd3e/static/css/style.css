@@ -9,16 +9,23 @@ div.centered {
 */
 .header {
     width: 100%;
-    height: 202px;
+    height: 247px;
     background-image: url(../img/header_bg.png);
     background-repeat: repeat-x;	
 }
+.header div.top {
+	width: 960px;
+	float: left;
+}
+.header div.bot {
+	width: 960px;
+	float: left;
+}
 .header ul.main {
     list-style: none;
-    margin-left: 20px;
-    margin-top: 158px;
     height: 45px;
     float: left;
+    margin-top: 5px;
 }
 .header ul.main li {
     display: inline;
@@ -36,8 +43,8 @@ div.centered {
 .header ul.main li a span {
     padding-right: 11px;
     padding-left: 4px;
-    padding-bottom: 13px;
-    padding-top: 11px;
+    padding-bottom: 11px;
+    padding-top: 13px;
     background-image: url(../img/header_main_nav_right.png);
     background-position: 100% -45px;
     background-repeat: no-repeat;
@@ -67,24 +74,29 @@ div.centered {
     height: 45px;
     background-image: url(../img/blog_logo.png);
     background-position: left;
-    margin-left: 10px;
-    margin-top: 157px;
     float: left;
+    margin-top: 4px;
+    margin-left: 5px;
 }
 .logo:hover {
     background-position: right;
 }
-.header div.twitter_bg {
-    list-style: none;
-    float: right;
+.header div.header_graphic {
     background-image:  url(../img/header_graphic.png);
-    width: 511px;
-    height: 202px;
+    width: 417px;
+    height: 198px;
+    margin: 0 auto;
+}
+div.shoutbox {
+	float: left;
+	width: 160px;
+	margin-left: 300px;
+	margin-top: 80px;
 }
 .auth_span {
     float: right;
-    margin-right: 10px;
-    margin-top: 170px;
+    margin-top: 20px;
+    margin-right: 5px;
 }
 .auth_span a {
 

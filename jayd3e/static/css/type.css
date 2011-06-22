@@ -50,3 +50,8 @@ h1, h2, a, span, p, label, div, ul, ol {
 .operations {
     font-size: 80%;
 }
+div.shoutbox {
+	text-align: center;
+	font-size: 110%;
+	color: #2e2e2e;
+}
