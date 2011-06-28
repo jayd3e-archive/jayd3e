@@ -11,6 +11,8 @@ from jayd3e.handlers.doc import DocHandler
 from jayd3e.handlers.post import PostHandler
 from jayd3e.handlers.auth import AuthHandler
 from jayd3e.handlers.feed import FeedHandler
+from jayd3e.handlers.archive import ArchiveHandler
+from jayd3e.handlers.contact import ContactHandler
 from jayd3e.exceptions import notFound
 from jayd3e.exceptions import forbidden
 from jayd3e.models.model import initializeDb
@@ -40,6 +42,8 @@ def main(global_config, **settings):
     config.add_handler('doc_root', '/doc', handler=DocHandler, action='index')
     config.add_handler('post_root', '/post', handler=PostHandler, action='index')
     config.add_handler('feed_root', '/feed', handler=FeedHandler, action='atom')
+    config.add_handler('archive_root', '/archive', handler=ArchiveHandler, action='index')
+    config.add_handler('contact_root', '/contact', handler=ContactHandler, action='index')
 
     #Handler Action Routes
     config.add_handler('site_action', '/{action}', handler=SiteHandler)
@@ -49,6 +53,7 @@ def main(global_config, **settings):
     config.add_handler('post_action_id', '/post/{action}/{id}', handler=PostHandler)
     config.add_handler('auth_action', '/auth/{action}', handler=AuthHandler)
     config.add_handler('feed_action', '/feed/{action}', handler=FeedHandler)
+    config.add_handler('archive_action', '/archive/{month}', handler=ArchiveHandler, action='month')
 
     #Exception Views
     config.add_view(notFound,

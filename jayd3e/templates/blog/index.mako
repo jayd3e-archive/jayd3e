@@ -5,7 +5,7 @@
     % for post in posts:
         <div class="post">    
             <div class="title">
-                <h1>${post.date.strftime('%B %d, %Y') if post.date else 'None'}</h1>
+                <h1>${post.created.strftime('%B %d, %Y') if post.created else 'None'}</h1>
                 % if logged_in:
                     <div class="operations">
                         <a href="/post/edit/${post.id}">Edit</a>

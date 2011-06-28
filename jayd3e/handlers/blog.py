@@ -14,7 +14,10 @@ class BlogHandler(object):
         title = 'Blog Index'
         session = Session()
         posts = session.query(PostModel).order_by(PostModel.created).all()
+        #Sort descending by created date
         posts.reverse()
+        #Grab the five most recent posts
+        posts = posts[0:5]
         session.close()
         return {'here':self.here,
                 'title':title,

@@ -19,8 +19,8 @@
 	        </li>
 	        <li>
 	            <a
-	            ${'class="active"' if '/blog/archive' in here else '' | n}
-	            href="/blog/archive">
+	            ${'class="active"' if '/archive' in here else '' | n}
+	            href="/archive">
 	                <span>Archives</span>
 	            </a>
 	        </li>
@@ -33,8 +33,8 @@
 	        </li>
 	        <li>
 	            <a
-	            ${'class="active"' if '/blog/contact' in here else '' | n}
-	            href="/blog/contact">
+	            ${'class="active"' if '/contact' in here else '' | n}
+	            href="/contact">
 	                <span>Contact</span>
 	            </a>
 	        </li>
