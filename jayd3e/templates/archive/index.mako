@@ -4,6 +4,6 @@
 <%def name="body()">
 	<h1>Archives</h1>
     % for month in months:
-        <a href="/archive/${month}">${month}</a>
+        <a href="/archive/${month}">${month}</a></br>
     % endfor
 </%def>

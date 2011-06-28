@@ -16,11 +16,11 @@ class ArchiveHandler(object):
         posts = session.query(PostModel).order_by(PostModel.created).all()
         posts.reverse()
         
+        months = []
         for post in posts:
-            months = []
-            if post.date.strftime('%B') not in months:
-                months.append(post.date.strftime('%B'))
-                 
+            if post.created.strftime('%B') not in months:
+                months.append(post.created.strftime('%B'))
+
         session.close()
         return {'here':self.here,
                 'title':title,
