@@ -14,12 +14,12 @@
     </head>
     <body>
         <div class="header">
-        	<div class="centered">
+            <div class="centered">
             	${header.header(here)}
-			</div>
+            </div>
         </div>
         <div class="centered">
-        	<div class="body">
+            <div class="body">
             	${self.body()}
             </div>
         </div>

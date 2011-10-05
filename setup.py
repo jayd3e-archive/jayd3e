@@ -17,7 +17,7 @@ setup(name='JayD3e',
                         'pysqlite'],
       url='http://localhost',
       packages=['jayd3e'],
-      test_suite='jayd3e',
+      test_suite='jayd3e.tests',
       entry_points = """\
       [paste.app_factory]
       main = jayd3e:main
