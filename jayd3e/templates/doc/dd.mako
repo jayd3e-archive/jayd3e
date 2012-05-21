@@ -27,7 +27,7 @@
     </div>
     <div class="collapseable">
        <h2>Requirements</h2>
-       <ul>
+       <ul class="styled_list">
            <li>Allow for collapseable/expandable sections.</li>
            <li>A comprehensive table of contents at the top of the page.</li>
        </ul>

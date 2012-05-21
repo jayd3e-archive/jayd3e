@@ -18,8 +18,8 @@ class ArchiveHandler(object):
         
         months = []
         for post in posts:
-            if post.created.strftime('%B') not in months:
-                months.append(post.created.strftime('%B'))
+            if post.created.strftime('%B - %Y') not in months:
+                months.append(post.created.strftime('%B - %Y'))
 
         session.close()
         return {'here':self.here,
@@ -30,7 +30,8 @@ class ArchiveHandler(object):
     @action(renderer='archive/month.mako')
     def month(self):
         matchdict = self.request.matchdict
-        title = 'Archive ' + matchdict['month']
+        date = matchdict['month'] + ' - ' + matchdict['year']
+        title = 'Archive ' + date
         session = Session()
         
         posts = session.query(PostModel).all()
@@ -38,7 +39,7 @@ class ArchiveHandler(object):
         
         month_posts = []
         for post in posts:
-            if post.created.strftime('%B') == matchdict['month']:
+            if post.created.strftime('%B - %Y') == date:
                 month_posts.append(post)
             
         return {'here':self.here,

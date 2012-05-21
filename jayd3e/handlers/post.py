@@ -16,9 +16,9 @@ class PostHandler(object):
     def add(self):
         title = 'Post Add'
         session = Session()
-        if self.request.str_POST:
-            new_post = PostModel(title=self.request.str_POST['title'],
-                                 body=self.request.str_POST['body'],
+        if self.request.POST:
+            new_post = PostModel(title=self.request.POST['title'],
+                                 body=self.request.POST['body'],
                                  date=date.today(),
                                  created=datetime.now(),
                                  change_time=datetime.now())
@@ -36,9 +36,9 @@ class PostHandler(object):
         title = 'Post Edit'
         id = self.request.matchdict['id']
         post = session.query(PostModel).filter_by(id=id).first()
-        if self.request.str_POST:
-            post.title = self.request.str_POST['title']
-            post.body = self.request.str_POST['body']
+        if self.request.POST:
+            post.title = self.request.POST['title']
+            post.body = self.request.POST['body']
             post.change_time = datetime.now()
             session.commit()
             return HTTPFound(location='/blog')

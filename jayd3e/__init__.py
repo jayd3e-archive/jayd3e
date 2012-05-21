@@ -53,7 +53,7 @@ def main(global_config, **settings):
     config.add_handler('post_action_id', '/post/{action}/{id}', handler=PostHandler)
     config.add_handler('auth_action', '/auth/{action}', handler=AuthHandler)
     config.add_handler('feed_action', '/feed/{action}', handler=FeedHandler)
-    config.add_handler('archive_action', '/archive/{month}', handler=ArchiveHandler, action='month')
+    config.add_handler('archive_action', '/archive/{year}/{month}', handler=ArchiveHandler, action='month')
 
     #Exception Views
     config.add_view(notFound,

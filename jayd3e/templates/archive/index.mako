@@ -4,6 +4,11 @@
 <%def name="body()">
 	<h1>Archives</h1>
     % for month in months:
-        <a href="/archive/${month}">${month}</a></br>
+        <%
+            parts = month.split(" - ")
+            m = parts[0]
+            y = parts[1]
+        %>
+        <a href="/archive/${y}/${m}">${month}</a></br>
     % endfor
 </%def>

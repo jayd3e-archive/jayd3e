@@ -3,7 +3,5 @@
 
 <%def name="body()">
     <h1>Contact</h1>
-    <p>
-    Email:  jd.dallago@gmail.com
-    </p>
+    <p>Email:  jd.dallago@gmail.com</p>
 </%def>

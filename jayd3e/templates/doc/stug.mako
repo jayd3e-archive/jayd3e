@@ -32,7 +32,7 @@
     </div>
     <div class="collapseable">
        <h2>Requirements</h2>
-       <ul>
+       <ul class="styled_list">
            <li>Allow students to easily write out the solutions to a variety of complex
            mathematical problems.</li>
            <li>Provide a point system that will allow active users to be rewarded.</li>

@@ -1,15 +1,6 @@
 <%def name="header(here)">
-	<div class="top">
-		<div class="shoutbox">
-			<p>"Welcome To My Brain Dump."</p>
-		</div>
-		<div class="header_graphic"></div>
-	</div>
-	<div class="bot">
-	    <a href="/">
-	        <div class="logo"></div>
-	    </a>
-	    <ul class="main">
+	    <a class="logo" href="/"></a>
+	    <ul class="nav">
 	        <li>
 	            <a
 	            ${' class="active" ' if '/blog' in here else '' | n}
@@ -39,14 +30,27 @@
 	            </a>
 	        </li>
 	    </ul>
-	    <div class="auth_span">
-	        ${logged_in if logged_in else 'Guest'} - 
-	        % if logged_in:            
-	            <a href="/post/add">New Post</a> -
-	            <a href="/auth/logout">Logout</a> 
+	    <ul class="account">
+	    	% if logged_in:
+	            <li>
+	            	<a href="/auth/logout">Logout</a>
+	            </li>
+	            <li>
+		        	<span>-</span>
+		        </li>
+	        	<li>      
+	            	<a href="/post/add">New Post</a>
+	            </li>
 	        % else:
-	            <a href="/auth/login">Login</a>
+	            <li>
+	            	<a href="/auth/login">Login</a>
+	            </li>
 	        % endif
-	    </div>
-	</div>
+	        <li>
+	        	<span>-</span>
+	        </li>
+	        <li>
+	        	<span>${logged_in if logged_in else 'Guest'}</span>
+	        </li>
+	    </ul>
 </%def>

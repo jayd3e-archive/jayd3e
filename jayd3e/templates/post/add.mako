@@ -1,7 +1,7 @@
 <%inherit file="../layouts/base.mako"/>
 
 <%def name="body()">
-    <form method="post" class="std_form">
+    <form method="post">
         <label for="title">Title</label>
         <input name="title" class="post_title" id="title" type="text" tabindex="1"></input>
         <label for="body">Body</label>
