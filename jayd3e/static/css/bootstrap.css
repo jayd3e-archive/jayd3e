@@ -30,6 +30,12 @@
   font-weight: 400;
   color: #407CC2; }
 
+.aside {
+  width: 240px; }
+  .aside .recent a {
+    display: block;
+    margin: 5px 0px; }
+
 a {
   text-decoration: underline; }
 

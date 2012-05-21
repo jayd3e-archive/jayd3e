@@ -64,4 +64,5 @@ def main(global_config, **settings):
                     context=Forbidden,
                     permission='__no_permission_required__')
 
+    config.scan('jayd3e');
     return config.make_wsgi_app()

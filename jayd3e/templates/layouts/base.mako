@@ -26,6 +26,17 @@
                 <div class="page">
             	   ${self.body()}
                 </div>
+                <div class="aside">
+                    <h4>Recent</h4>
+                    <div class="recent">
+                        % for recent_post in recent_posts:
+                            <% post_title = recent_post.title %>
+                            <a href="/post/${recent_post.id}">
+                                ${post_title[:32] + '...' if len(post_title) > 32 else post_title}
+                            </a>
+                        % endfor
+                    </div>
+                </div>
             </div>
         </div>
         <div class="footer">
