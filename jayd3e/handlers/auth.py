@@ -22,9 +22,9 @@ class AuthHandler(object):
         username = ''
         password = ''
 
-        if 'submit' in self.request.str_POST:
-            username = self.request.str_POST['username']
-            password = self.request.str_POST['password']
+        if 'submit' in self.request.POST:
+            username = self.request.POST['username']
+            password = self.request.POST['password']
             if USERS.get(username) == password:
                 self.headers = remember(self.request, username)
                 return HTTPFound(location = self.came_from,
