@@ -10,28 +10,28 @@
 
 .post {
     > h1 {
-        display: inline-block;
+        display: inline-block; // SlickNasty override
         margin-right: 10px;
-        color: $FColor;
+        color: $FColor; // SlickNasty override
     }
 
     .content {
         h2 {
-            font-size: 18px;
-            font-weight: 400;
-            color: #407CC2;
+            font-size: 18px; // SlickNasty override
+            font-weight: 400; // SlickNasty override
+            color: #407CC2; // SlickNasty override
         }
 
         h3 {
-            font-size: 16px;
-            font-weight: 400;
-            color: #407CC2;
+            font-size: 16px; // SlickNasty override
+            font-weight: 400; // SlickNasty override
+            color: #407CC2; // SlickNasty override
         }
     }
 }
 
 .aside {
-    width: 240px;
+    width: 240px;  // SlickNasty override
 
     .recent {
         a {
