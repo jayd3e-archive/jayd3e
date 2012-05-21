@@ -12,7 +12,7 @@
         % endif
         <div class="content styled_lists">
             <h2>${post.title}</h2>
-            ${markdown(post.body)}
+            ${markdown(post.body)|n}
         </div>
     </div>
 </%def>

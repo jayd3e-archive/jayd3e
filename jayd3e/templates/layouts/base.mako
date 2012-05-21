@@ -31,7 +31,7 @@
                     <div class="recent">
                         % for recent_post in recent_posts:
                             <% post_title = recent_post.title %>
-                            <a href="/post/${recent_post.id}">
+                            <a href="/post/view/${recent_post.id}">
                                 ${post_title[:32] + '...' if len(post_title) > 32 else post_title}
                             </a>
                         % endfor

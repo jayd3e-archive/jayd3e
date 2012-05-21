@@ -17,7 +17,7 @@
         </div>
         
         <div class="form_actions">
-            <input type="submit" value="Submit"></input>
+            <input class="primary" type="submit" value="Submit"></input>
         </div>
     </form>
 </%def>
