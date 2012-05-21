@@ -1,5 +1,5 @@
 <%def name="header(here)">
-	    <a class="logo" href="/"></a>
+	    <a class="logo" href="/">jayd3e</a>
 	    <ul class="nav">
 	        <li>
 	            <a
