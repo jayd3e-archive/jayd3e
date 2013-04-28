@@ -1,17 +1,6 @@
 import unittest
 from pyramid import testing
 from pyramid.httpexceptions import HTTPFound
-from jayd3e.handlers.auth import AuthHandler
-from jayd3e.handlers.blog import BlogHandler
-from jayd3e.handlers.doc import DocHandler
-from jayd3e.handlers.post import PostHandler
-from jayd3e.handlers.site import SiteHandler
-from jayd3e.handlers.feed import FeedHandler
-from jayd3e.models.post import PostModel
-from jayd3e.models.model import initializeDb
-from jayd3e.models.model import engine
-from jayd3e.models.model import Session
-from jayd3e.db.config import TestConfig
 from datetime import date
 from datetime import datetime
 

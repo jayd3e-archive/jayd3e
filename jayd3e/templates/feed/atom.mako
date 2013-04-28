@@ -12,6 +12,7 @@
         <name>Joe Dallago</name>
         <email>jd.dallago@gmail.com</email>
     </author>
+
     % for post in posts:
         <entry>
             <title>${post.title}</title>

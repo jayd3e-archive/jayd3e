@@ -1,5 +1,7 @@
+import datetime
+
 from pyramid.view import view_config
-from jayd3e.models.post import Post
+from jayd3e.models import Post
 
 from pyramid.httpexceptions import HTTPFound
 from pyramid.security import remember
@@ -20,7 +22,8 @@ def get_came_from(request, default_route_name='index'):
     return referrer
 
 
-@view_config(renderer='auth/login.mako')
+@view_config(route_name='login',
+             renderer='auth/login.mako')
 def login(request):
     title = 'Login Page'
 
@@ -43,15 +46,16 @@ def login(request):
             'message': message}
 
 
-@view_config()
+@view_config(route_name='logout')
 def logout(request):
     headers = forget(request)
     return HTTPFound(location='/',
                      headers=headers)
 
 
-@view_config(renderer='archive/index.mako')
-def index(request):
+@view_config(route_name='archive',
+             renderer='archive/index.mako')
+def archive(request):
     db = request.db
 
     title = 'Archive Index'
@@ -68,12 +72,14 @@ def index(request):
             'months': months}
 
 
-@view_config(renderer='archive/month.mako')
-def month(request):
+@view_config(route_name='archive_month',
+             renderer='archive/month.mako')
+def archive_month(request):
     matchdict = request.matchdict
     db = request.db
 
-    date = matchdict['month'] + ' - ' + matchdict['year']
+    date = '%s-%s' % (matchdict['month'],
+                      matchdict['year'])
     title = 'Archive ' + date
 
     posts = db.query(Post).all()
@@ -88,110 +94,109 @@ def month(request):
             'posts': month_posts}
 
 
-@view_config(renderer='blog/index.mako')
-def index(self):
+@view_config(route_name='blog',
+             renderer='blog/index.mako')
+def blog(request):
+    db = request.db
+
     title = 'Blog Index'
-    session = Session()
-    posts = session.query(PostModel).order_by(PostModel.created).all()
-    #Sort descending by created date
-    posts.reverse()
-    #Grab the five most recent posts
-    posts = posts[0:5]
-    session.close()
-    return {'here': self.here,
-            'title': title,
-            'logged_in': self.logged_in,
+
+    posts = db.query(Post).order_by(Post.created).all()
+    return {'title': title,
             'posts': posts}
 
 
-@view_config(renderer='blog/hackeyes.mako')
-def hackeyes(self):
+@view_config(route_name='hackeyes',
+             renderer='blog/hackeyes.mako')
+def hackeyes(request):
     return {}
 
 
-@view_config(renderer='contact/index.mako')
-def index(self):
+@view_config(route_name='contact',
+             renderer='contact/index.mako')
+def contact(self):
     title = 'Contact Info'
 
-    return {'here': self.here,
-            'title': title,
-            'logged_in': self.logged_in}
+    return {'title': title}
 
 
-@view_config(renderer="feed/atom.mako")
-def atom(self):
-    session = Session()
+@view_config(route_name='feed',
+             renderer="feed/atom.mako")
+def atom(request):
+    db = request.db
 
-    posts = session.query(PostModel).order_by(PostModel.created).all()
-    posts.reverse()
-    posts = posts[0:5]
+    posts = db.query(Post).order_by(Post.created).all()
 
-    max_change_time = session.query(func.max(PostModel.change_time)).first()
+    max_change_time = db.query(func.max(Post.change_time)).first()
     updated = max_change_time[0].strftime("%Y-%m-%dT%H:%M:%SZ")
 
-    session.close()
     return {'posts': posts,
             'updated': updated}
 
 
-@view_config(renderer='post/add.mako', permission='edit')
-def add(self):
+@view_config(route_name='post_add',
+             renderer='post/add.mako',
+             permission='edit')
+def post_add(request):
+    db = request.db
+
     title = 'Post Add'
-    session = Session()
-    if self.request.POST:
-        new_post = PostModel(title=self.request.POST['title'],
-                             body=self.request.POST['body'],
-                             date=date.today(),
-                             created=datetime.now(),
-                             change_time=datetime.now())
-        session.add(new_post)
-        session.commit()
+
+    if request.POST:
+        new_post = Post(title=request.POST['title'],
+                        body=request.POST['body'],
+                        date=datetime.date.today(),
+                        created=datetime.now(),
+                        change_time=datetime.now())
+        db.add(new_post)
+        db.commit()
         return HTTPFound(location='/blog')
-    session.close()
-    return {'here': self.here,
-            'logged_in': self.logged_in,
-            'title': title}
+
+    return {'title': title}
 
 
-@view_config(renderer='post/edit.mako', permission='edit')
-def edit(self):
-    session = Session()
+@view_config(route_name='post_edit',
+             renderer='post/edit.mako',
+             permission='edit')
+def post_edit(request):
+    db = request.db
+
     title = 'Post Edit'
-    id = self.request.matchdict['id']
-    post = session.query(PostModel).filter_by(id=id).first()
-    if self.request.POST:
-        post.title = self.request.POST['title']
-        post.body = self.request.POST['body']
+    _id = request.matchdict['id']
+
+    post = db.query(Post).filter_by(id=_id).first()
+
+    if request.POST:
+        post.title = request.POST['title']
+        post.body = request.POST['body']
         post.change_time = datetime.now()
-        session.commit()
         return HTTPFound(location='/blog')
 
-    session.close()
-    return {'here': self.here,
-            'logged_in': self.logged_in,
-            'title': title,
+    return {'title': title,
             'post': post}
 
 
-@view_config(permission='edit')
-def delete(self):
-    session = Session()
-    id = self.request.matchdict['id']
-    delete_post = session.query(PostModel).filter_by(id=id).first()
-    session.delete(delete_post)
-    session.commit()
-    session.close()
+@view_config(route_name='post_delete',
+             permission='edit')
+def post_delete(request):
+    db = request.db
+
+    _id = request.matchdict['id']
+
+    delete_post = db.query(Post).filter_by(id=_id).first()
+    db.delete(delete_post)
+
     return HTTPFound(location='/blog')
 
 
 @view_config(renderer='post/view.mako')
-def view(self):
-    session = Session()
+def view(request):
+    db = request.db
+
     title = 'Post View'
-    id = self.request.matchdict['id']
-    post = session.query(PostModel).filter_by(id=id).first()
-    session.close()
-    return {'here': self.here,
-            'title': title,
-            'logged_in': self.logged_in,
+
+    _id = request.matchdict['id']
+    post = db.query(Post).filter_by(id=_id).first()
+
+    return {'title': title,
             'post': post}
