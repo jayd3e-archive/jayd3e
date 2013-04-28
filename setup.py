@@ -1,15 +1,19 @@
 #StudentUnderground/setup.py
 from setuptools import setup
 
-setup(name='JayD3e',
+entry_points = """\
+    [paste.app_factory]
+    main = jayd3e:main
+"""
+
+setup(name='jayd3e',
       version='0.1dev',
       description='My personal blog.',
       long_description='',
       install_requires=['pyramid==1.3',
                         'mako',
                         'sqlalchemy',
-                        'pyramid_handlers',
-                        'MySQL-python',
+                        'psycopg2',
                         'waitress',
                         'nose',
                         'coverage',
@@ -18,8 +22,5 @@ setup(name='JayD3e',
       url='http://localhost',
       packages=['jayd3e'],
       test_suite='jayd3e.tests',
-      entry_points = """\
-      [paste.app_factory]
-      main = jayd3e:main
-      """,
+      entry_points=entry_points
       )

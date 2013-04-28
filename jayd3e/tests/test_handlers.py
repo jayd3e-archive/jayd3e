@@ -1,8 +1,8 @@
 import unittest
 from pyramid import testing
 from pyramid.httpexceptions import HTTPFound
-from jayd3e.handlers.auth import AuthHandler 
-from jayd3e.handlers.blog import BlogHandler 
+from jayd3e.handlers.auth import AuthHandler
+from jayd3e.handlers.blog import BlogHandler
 from jayd3e.handlers.doc import DocHandler
 from jayd3e.handlers.post import PostHandler
 from jayd3e.handlers.site import SiteHandler
@@ -15,6 +15,7 @@ from jayd3e.db.config import TestConfig
 from datetime import date
 from datetime import datetime
 
+
 class TestAuthHandler(unittest.TestCase):
     def setUp(self):
         initializeDb(engine(TestConfig))
@@ -23,7 +24,7 @@ class TestAuthHandler(unittest.TestCase):
         self.request.str_POST = {}
         self.request.environ['PATH_INFO'] = ''
         self.config.include('pyramid_handlers')
-        self.config.add_handler('auth_action', '/auth/{action}', handler=AuthHandler) 
+        self.config.add_handler('auth_action', '/auth/{action}', handler=AuthHandler)
 
     def testAuthHandlerInit(self):
         self.request.url = 'http://example.com/blog'
@@ -40,17 +41,17 @@ class TestAuthHandler(unittest.TestCase):
         self.assertIs(handler.here, '')
 
     def testAuthLoginSuccess(self):
-        self.request.str_POST = {'username':'test',
-                                 'password':'testpass',
-                                 'submit':''}
+        self.request.str_POST = {'username': 'test',
+                                 'password': 'testpass',
+                                 'submit': ''}
         handler = AuthHandler(self.request)
         response = handler.login()
         self.assertIsInstance(response, HTTPFound)
 
     def testAuthLoginFailed(self):
-        self.request.str_POST = {'username':'test',
-                                 'password':'wrongpass',
-                                 'submit':''}
+        self.request.str_POST = {'username': 'test',
+                                 'password': 'wrongpass',
+                                 'submit': ''}
         handler = AuthHandler(self.request)
         response = handler.login()
         self.assertIn('message', response)
@@ -76,6 +77,7 @@ class TestAuthHandler(unittest.TestCase):
     def tearDown(self):
         testing.tearDown()
         Session().close()
+
 
 class TestBlogHandler(unittest.TestCase):
     def setUp(self):
@@ -106,6 +108,7 @@ class TestBlogHandler(unittest.TestCase):
     def tearDown(self):
         testing.tearDown()
         Session().close()
+
 
 class TestDocHandler(unittest.TestCase):
     def setUp(self):
@@ -144,6 +147,7 @@ class TestDocHandler(unittest.TestCase):
     def tearDown(self):
         testing.tearDown()
         Session().close()
+
 
 class TestPostHandler(unittest.TestCase):
     def setUp(self):
@@ -267,7 +271,7 @@ class TestPostHandler(unittest.TestCase):
         session.commit()
 
         #Setup variables that are passed into the handler
-        self.request.matchdict = {'id':post.id}
+        self.request.matchdict = {'id': post.id}
         self.request.environ['PATH_INFO'] += '/view'
 
         #Call action and capture responsea
@@ -282,6 +286,7 @@ class TestPostHandler(unittest.TestCase):
     def tearDown(self):
         testing.tearDown()
         Session().close()
+
 
 class TestSiteHandler(unittest.TestCase):
     def setUp(self):
@@ -302,6 +307,7 @@ class TestSiteHandler(unittest.TestCase):
         testing.tearDown()
         Session().close()
 
+
 class TestFeedHandler(unittest.TestCase):
     def setUp(self):
         initializeDb(engine(TestConfig))
@@ -313,7 +319,7 @@ class TestFeedHandler(unittest.TestCase):
     def testFeedHandlerAtom(self):
         session = Session()
 
-        for i in range(0,10):
+        for i in range(0, 10):
             post = PostModel(title='Test Title',
                              body='Test body.',
                              date=date.today(),

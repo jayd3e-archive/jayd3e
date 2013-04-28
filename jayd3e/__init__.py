@@ -19,6 +19,7 @@ from jayd3e.models.model import initializeDb
 from jayd3e.models.model import engine
 from jayd3e.db.config import DbConfig
 
+
 def main(global_config, **settings):
     '''This function configures the application and returns a WSGI application'''
     initializeDb(engine(DbConfig))
@@ -64,5 +65,5 @@ def main(global_config, **settings):
                     context=Forbidden,
                     permission='__no_permission_required__')
 
-    config.scan('jayd3e');
+    config.scan('jayd3e')
     return config.make_wsgi_app()

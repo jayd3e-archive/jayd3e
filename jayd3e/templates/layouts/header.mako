@@ -5,7 +5,7 @@
 	            <a
 	            ${' class="active" ' if '/blog' in here else '' | n}
 	            href="/blog">
-	                <span>Recent</span> 
+	                <span>Recent</span>
 	            </a>
 	        </li>
 	        <li>
@@ -18,7 +18,7 @@
 	        <li>
 	            <a
 	            ${'class="active"' if '/doc' in here else '' | n}
-	            href="/doc">            
+	            href="/doc">
 	                <span>Docs</span>
 	            </a>
 	        </li>
@@ -38,7 +38,7 @@
 	            <li>
 		        	<span>-</span>
 		        </li>
-	        	<li>      
+	        	<li>
 	            	<a href="/post/add">New Post</a>
 	            </li>
 	        % else:

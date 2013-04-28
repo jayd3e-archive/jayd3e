@@ -3,7 +3,7 @@
 
 <%def name="body()">
     % for post in posts:
-        <div class="post">    
+        <div class="post">
             <h1>${post.created.strftime('%B %d, %Y') if post.created else 'None'}</h1>
             % if logged_in:
                 <div class="operations">

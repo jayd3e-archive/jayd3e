@@ -1,6 +1,7 @@
 import unittest
 from pyramid import testing
 
+
 class TestExceptions(unittest.TestCase):
     def testNotFound(self):
         from jayd3e.exceptions import notFound

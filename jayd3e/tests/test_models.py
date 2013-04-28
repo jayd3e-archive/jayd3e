@@ -3,6 +3,7 @@ from pyramid import testing
 from jayd3e.models.site import SiteModel
 from jayd3e.models.post import PostModel
 
+
 class TestSiteModel(unittest.TestCase):
     def setUp(self):
         self.request = testing.DummyRequest
